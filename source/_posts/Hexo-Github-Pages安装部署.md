@@ -1,47 +1,39 @@
----
 title: Hexo+Github Pages安装部署
-author: alben.wong
+author: xuezc
 tags:
   - hexo
 categories:
   - hexo
 abbrlink: 3454819c
-date: 2018-09-04 11:45:00
 keywords: hexo github
 description: Hexo+Github Pages入门基础的安装和部署，使用next主题，教你发布第一篇文章。
+date: 2023-09-04 11:45:00
 ---
 ## 概要
-想低成本的搞一个博客，在网上找了很多参考资料，于是尝试 Hexo+Github Pages 折腾一下。我把自己的搭建过程记录下来，把其中遇到的一些问题也跟大家分享。
+参考https://albenw.github.io/
 
 ## 安装过程
 
-### 前提
-我用的是 macOS 系统；  
+### 前提 
 node、npm、git 等的安装，还有 github 的配置就不多讲了；  
 基于 hexo 的 3.7.0 版本。
 
-### 安装 hexo 客户端
+### 安装 hexo 客户端和admin
 ```shell
 npm install -g hexo-cli
+npm install --save hexo-admin
 ```
 
 ### 创建一个用来放 hexo 的文件夹
 （假设为 hexo）cd 进去，创建 hexo 站点
 ```shell
+cd hexo
 hexo init 
 ```
 
 ### 使用 next 主题
 为了博客的美观和使用上方面，我使用的大众的 next 主题。cd themes 目录。
-
-#### 下载 next 主题
-```shell
-git clone https://github.com/iissnan/hexo-theme-next
-```
-
-#### 修改 theme
-编辑 hexo/_config.yml，找到 theme 那一行配置，修改为 next
-
+git 更新子模块
 
 ### 本地启动看看
 安装完之后，我们可以在本地启动看看博客初始化的效果。
