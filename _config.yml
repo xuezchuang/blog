@@ -133,6 +133,9 @@ image_minifier:
   pngquant: false
   progressive: false
   
+abbrlink:
+  alg: crc32
+  rep: hex
   ## local search
 search:
   path: search.xml
