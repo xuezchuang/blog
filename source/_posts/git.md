@@ -5,41 +5,83 @@ tags:
 categories:
   - git
 description: git使用手册
+abbrlink: 518e617c
 date: 2023-03-27 18:45:00
 ---
 ## 使用代理github
+socks5协议，10808端口修改成自己的本地代理端口
+```shell 
+git config --global http.proxy socks5://127.0.0.1:10808
+git config --global https.proxy socks5://127.0.0.1:10808
+``` 
+http协议，10809端口修改成自己的本地代理端口
 ```shell
-	git config --global http.proxy http://127.0.0.1:2334
-	git config --global https.proxy https://127.0.0.1:2334
-	git config --global http.proxy socks5://127.0.0.1:2334
-	为啥走的是sock5的通道??
-	git config --global --unset http.proxy scanf()
-	git config --global --unset https.proxy
-	
-	ssh-keygen -t rsa -f ~/.ssh/id_rsa_gitee_two -C "gitee-user2@email.com"
-	ssh-keygen -t rsa -C ""
-  ```
+git config --global http.proxy http://127.0.0.1:10809
+git config --global https.proxy https://127.0.0.1:10809
+```
+只是加速GITHUB ， 其他保持不变
+```shell
+# http协议
+git config --global http.https://github.com.proxy https://127.0.0.1:10809
+git config --global https.https://github.com.proxy https://127.0.0.1:10809
+# socks5协议，1080端口修改成自己的本地代理端口
+git config --global http.https://github.com.proxy socks5://127.0.0.1:10808
+git config --global https.https://github.com.proxy socks5://127.0.0.1:10808
+```
+### 解除代理
+```shell
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+```
+## tortoiseGit的SSH Client设置
+### 搜索到PuttyGen程序,单击“Load”按钮，如下图所示
+
+<img src="/images/puttygen.png" width="593px"  height="462px">
+
+### 选择用户的公私钥目录下的“id_rsa”文件，然后单击“打开”按钮
+
+<img src="/images/ssh_dir.png" width="463px"  height="132px">
+
+### 单击“确定”，再选择“Save private key”，如下图所示
+<img src="/images/ppk_save.png" width="604px"  height="149px">
+
+### 生成的文件添加到这儿
+<img src="/images/add_ppk.png">
+
 ## git命令
+查看当前版本
 ```shell
-    git status  **查看目前状态**
-    git status -s
-    git diff **查看工作区跟缓冲区的改变**
-    git diff --cached **查看缓冲区和上个版本区别**
-    git diff head **查看工作区、缓冲区和上个版本区别**
-    git commit -m 'fff'提交
-    
-    git checkout 文件名 将缓冲区还原到工作区
-    git reset 版本还原到缓冲区
-    git branch 查看当前分支
-    git branch -d 分支	//删除分支
-    创建新分支并立即切换到新分支：$ git checkout -b [name]
-    合并分支（保留分支的commit）:
-    git checkout master//master为空则clone，不然切换到master分支
-    git merge dev//把dev分支的东西合并到master上
-    在主分支上应该可以只显示子分支的提交，可百度：
-    git merge dev --no-ff		用这个
- ```
- ### 更新所有远程分支
+git --version
+```
+windows下更新git
+```shell
+git update-git-for-windows
+```
+```shell
+git status  **查看目前状态**
+git status -s
+git diff **查看工作区跟缓冲区的改变**
+git diff --cached **查看缓冲区和上个版本区别**
+git diff head **查看工作区、缓冲区和上个版本区别**
+git commit -m 'fff'提交
+
+git checkout 文件名 将缓冲区还原到工作区
+git reset 版本还原到缓冲区
+git branch 查看当前分支
+git branch -d 分支	//删除分支
+创建新分支并立即切换到新分支：$ git checkout -b [name]
+合并分支（保留分支的commit）:
+git checkout master//master为空则clone，不然切换到master分支
+git merge dev//把dev分支的东西合并到master上
+在主分支上应该可以只显示子分支的提交，可百度：
+git merge dev --no-ff		用这个
+```
+### 生成key
+```shell
+ssh-keygen -t rsa -f ~/.ssh/id_rsa_gitee_two -C "gitee-user2@email.com"
+ssh-keygen -t rsa -C ""
+```
+### 更新所有远程分支
     git remote update origin --prune
     git remote update origin -p
 
