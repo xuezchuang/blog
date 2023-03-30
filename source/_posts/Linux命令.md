@@ -5,6 +5,7 @@ tags:
 categories:
   - linux
 abbrlink: 82734d8
+description: linux常用的命令,防火墙命令,netstat命令等.....
 date: 2023-03-30 20:47:00
 ---
 # netstat命令各个参数说明如下：
