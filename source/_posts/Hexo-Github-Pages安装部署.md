@@ -18,9 +18,33 @@ date: 2023-09-04 11:45:00
 node、npm、git 等的安装，还有 github 的配置就不多讲了；  
 基于 hexo 的 3.7.0 版本。
 
+### 安装npm
+设置代理
+```shell
+npm config set proxy=http://127.0.0.1:8087
+```
+#设置源
+```shell
+npm config set registry=http://registry.npmjs.org
+```
+#查看源
+```shell
+npm config get registry 
+```
+```
+取消代理
+```shell
+npm config delete proxy
+```
+```shell
+npm config delete https-proxy
+```
+
 ### 安装 hexo 客户端和admin
 ```shell
 npm install -g hexo-cli
+```
+```shell
 npm install --save hexo-admin
 ```
 
@@ -159,11 +183,32 @@ git push -f origin hexo-src - 强推上去
 git branch --set-upstream hexo-src origin/hexo-src - 关联上
 ```
 好了，以后改完文章或者修改完主题配置，就可以 push 到 github 了。
-
-## 参考资料
-https://blog.csdn.net/u012195214/article/details/79204088
-http://www.wuxubj.cn/2016/08/Hexo-nexT-build-personal-blog/#
-https://zhiho.github.io/2015/09/29/hexo-next/
-http://theme-next.iissnan.com/getting-started.html
-http://www.lzblog.cn/2016/04/07/Hexo%E7%AB%99%E7%82%B9%E3%80%81NexT%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9%E5%85%A8%E8%AE%B0%E5%BD%95/
-https://codezjx.com/2017/07/31/hexo-guide/
+## 添加链接
+在配置文件_config.yml中,找到social.添加书签跳转
+```shell
+social:
+  GitHub: https://*****.github.io/ || fab fa-github
+  标签: categories || 
+  git: categories/git || fa git
+  hexo: categories/hexo || 
+ ```
+### 图标
+在\themes\hexo-theme-next\source\css目录下main.styl文件中添加;
+相应图片放在image目录下即可
+```shell
+/* 侧边栏图标格式设置 */
+.git {
+  background-image: url('/images/git.png');
+  background-size: 1em 1em;
+  opacity: 0.55;
+  background-position: 0.05rem 0.2rem;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem; 
+  border-radius: 0rem;
+  /*鼠标停留在图标上时，图标呈现发光效果*/
+  &:hover {
+      opacity: 1;
+    }
+} 
+```

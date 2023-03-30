@@ -25,11 +25,11 @@ date: 2018-09-07 11:15:00
 
 #### 创建一个Class
 点击进去应用
-<img src="/images/hexo高级玩法__0.png" width="500px" height="200px">
+<img src="/images/hexo高级玩法__0.png">
 
 注意名字必须为 Counter，勾选无限制的权限。
 
-<img src="/images/hexo高级玩法__1.png" width="400px" height="250px">
+<img src="/images/hexo高级玩法__1.png">
 
 #### 修改主题配置
 修改 next 主题的_config.yml ，找到 leancloud_visitors ，修改为
@@ -42,22 +42,22 @@ leancloud_visitors:
 
 其中  app_id 和 app_key 在 LeanCloud 的设置 -> 应用 Key 可以找到
 
-<img src="/images/hexo高级玩法__2.png" width="400px" height="250px">
+<img src="/images/hexo高级玩法__2.png">
 
 #### 重启查看
 这样就配置好了，重新生成 hexo 并发布，我们就可以看到文章阅读次数的统计。  
 需要特别说明的是：记录文章访问量的唯一标识符是文章的发布日期以及文章的标题，因此请确保这两个数值组合的唯一性，如果你更改了这两个数值，会造成文章阅读数值的清零重计。
 
-<img src="/images/hexo高级玩法__3.png" width="400px" height="250px">
+<img src="/images/hexo高级玩法__3.png">
 
 在 LeanCloud 的后台我们可以看到一个整体的统计量，其中 time 字段就是统计数字，可以修改的哦。
 
-<img src="/images/hexo高级玩法__4.png" width="500px" height="250px">
+<img src="/images/hexo高级玩法__4.png">
 
 #### 安全
 因为AppID以及AppKey是暴露在外的，因此如果一些别用用心之人知道了之后用于其它目的是得不偿失的，为了确保只用于我们自己的博客，建议开启Web安全选项，这样就只能通过我们自己的域名才有权访问后台的数据了，可以进一步提升安全性。
 
-<img src="/images/hexo高级玩法__5.png" width="450px" height="250px">
+<img src="/images/hexo高级玩法__5.png">
 
 ### 评论功能
 在网上找了很多，有多说，畅言，来必力，gticomment，valine，选择 valine 是因为搞阅读统计的时候已经注册了 LeanCloud，可以顺手用上，而且 next 已经支持了 valine，可以简单快速用起来。
@@ -83,16 +83,16 @@ valine:
 #### 效果
 这样就我们已经配置好了，重启hexo，看到文章底部出现评论框
 
-<img src="/images/hexo高级玩法__6.png" width="450px" height="250px">
+<img src="/images/hexo高级玩法__6.png">
 
 #### 测试一下
 hexo d 发布后测试评论一条
 
-<img src="/images/hexo高级玩法__7.png" width="500px" height="250px">
+<img src="/images/hexo高级玩法__7.png">
 
 然后在 LeanCloud 后台可以看到，可以进行删除等操作。
 
-<img src="/images/hexo高级玩法__8.png" width="550px" height="250px">
+<img src="/images/hexo高级玩法__8.png">
 
 
 #### 关闭评论

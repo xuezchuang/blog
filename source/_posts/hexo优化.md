@@ -38,7 +38,7 @@ all_minifier: true
 ```
 
 在 hexo g 生成的时候会看到打印输出 xx% saved 这样的字眼，表示成功了。我觉得感觉是好像是。。快了一点。。吧。。
-<img src="/images/hexo优化__0.png" width="500px" height="200px">
+<img src="/images/hexo优化__0.png">
 
 ### 文章唯一link
 更改文章题目或者变更文章发布时间，在默认设置下，文章链接都会改变，不利于搜索引擎收录，也不利于分享。这里还是涉及爬虫的知识点，如果链接的层级太深，则对SEO不友好。所以简短的、唯一永久链接才是更好的选择。
@@ -64,7 +64,7 @@ abbrlink:
 #### 效果
 重启 hexo 生效后，可以看到文章的链接不再是“日期+文章名”，而是配置的 permalink，后面的一串字符就是 abbrlink。
 
-<img src="/images/hexo优化__1.png" width="400px" height="100px">
+<img src="/images/hexo优化__1.png">
 
 特别的说明：由于加了这个配置之后文章的链接URL变了，所以之前如果有做“评论”或“访问计数”配置的，就会全部失效。
 

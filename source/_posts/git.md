@@ -12,25 +12,37 @@ date: 2023-03-27 18:45:00
 socks5协议，10808端口修改成自己的本地代理端口
 ```shell 
 git config --global http.proxy socks5://127.0.0.1:10808
+```
+```shell
 git config --global https.proxy socks5://127.0.0.1:10808
 ``` 
 http协议，10809端口修改成自己的本地代理端口
 ```shell
 git config --global http.proxy http://127.0.0.1:10809
+```
+```shell
 git config --global https.proxy https://127.0.0.1:10809
 ```
 只是加速GITHUB ， 其他保持不变
+http协议
 ```shell
-# http协议
 git config --global http.https://github.com.proxy https://127.0.0.1:10809
+```
+```shell
 git config --global https.https://github.com.proxy https://127.0.0.1:10809
-# socks5协议，1080端口修改成自己的本地代理端口
+```
+### socks5协议，1080端口修改成自己的本地代理端口
+```shell
 git config --global http.https://github.com.proxy socks5://127.0.0.1:10808
+```
+```shell
 git config --global https.https://github.com.proxy socks5://127.0.0.1:10808
 ```
 ### 解除代理
 ```shell
 git config --global --unset http.proxy
+```
+```shell
 git config --global --unset https.proxy
 ```
 ## tortoiseGit的SSH Client设置
