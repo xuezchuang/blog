@@ -12,6 +12,13 @@ date: 2018-09-06 17:12:00
 ## 概要
 按照我之前hexo的安装部署，可以正常使用，但是或者存在性能或效率的问题，又或者在操作上不便，这篇文章希望能做一点优化和改善。
 
+## 在admin中添加自定义数据
+在hexo的_config.yml中添加
+```
+metadata:
+    description:
+```
+
 ## 优化
 ### 图片插入与存放问题
 一般来说有一下两种方式
@@ -79,7 +86,7 @@ length: 300  #设置预览的字数
 
 在首页看到的效果图，它的摘要只是把文本存粹的按照 length 截取出来。
 
-<img src="/images/hexo优化__2.png" width="400px" height="100px">
+<img src="/images/hexo优化__2.png">
 
 ### SEO优化
 做seo优化有利于搜索引擎对你网站的索引，根据关键字提高你网站的排名，提高曝光率。
@@ -104,7 +111,7 @@ description:
 ```
 这样在首页文章的预览中就会变成 description，利于 SEO。
 
-<img src="/images/hexo优化__3.png" width="400px" height="100px">
+<img src="/images/hexo优化__3.png">
 
 #### 添加 “nofollow” 标签
 >nofollow是HTML的一个属性，用于告诉搜索引擎不要追踪特定的网页链接。可以用于阻止在PR值高的网站上以留言等方式添加链接从而提高自身网站排名的行为，以改善搜索结果的质量，防止垃圾链接的蔓延。网站站长也可对其网页中的付费链接使用nofollow来防止该链接降低搜索排名。对一些重要度低的网页内容使用nofollow，还可以使搜索引擎以不同的优先级别来抓取网页内容。
@@ -176,6 +183,6 @@ by 维基百科
 
 ##### img 标签
 ```
-<img src="/images/hexo-admin安装使用__0.png" width="600px" height="200px" align=center>
+<img src="/images/hexo-admin安装使用__0.png" align=center>
 ```
 这样可以在直接 hexo-admin 中显示，路径也兼容生成后的 html。

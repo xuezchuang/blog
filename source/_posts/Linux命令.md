@@ -1,7 +1,7 @@
 title: Linux命令
 author: xuezc
 tags:
-  - linuxe
+  - linux
 categories:
   - linux
 abbrlink: 82734d8
