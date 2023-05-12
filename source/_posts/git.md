@@ -89,10 +89,53 @@ git merge dev//把dev分支的东西合并到master上
 git merge dev --no-ff		用这个
 ```
 ### 生成key
+只需一个秘钥可以ssh-keygen -t rsa -C "",多个秘钥
 ```shell
-ssh-keygen -t rsa -f ~/.ssh/id_rsa_gitee_two -C "gitee-user2@email.com"
-ssh-keygen -t rsa -C ""
+ssh-keygen -t rsa -C "13436472835@163.com" -f ~/.ssh/github_snow
 ```
+### 测试连接
+```
+ssh -T xuezchuang@github.com
+```
+指定秘钥测试
+```
+ssh -i ~/.ssh/github_snow -T xuezchuang@github.com
+```
+### 多秘钥配置
+设置代理,设置哪个网站使用那个秘钥
+```
+ssh-agent bash
+
+```
+删除缓存的密钥
+```
+ssh-add -D
+```
+把以下秘钥加入缓冲中
+
+```
+ssh-add ~/.ssh/id_rsa_xxx
+```
+进入到.ssh目录中,配置config文件
+```
+$ cd ~/.ssh
+$ touch config
+```
+config文件直接编辑器输入.对应个网站采用哪个私钥
+```
+Host github.com-foo
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_foo
+  IdentitiesOnly yes
+ 
+Host github.com-bar
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_bar
+  IdentitiesOnly yes
+```
+
 ### 更新所有远程分支
     git remote update origin --prune
     git remote update origin -p

@@ -7,7 +7,7 @@ categories:
 abbrlink: 3454819c
 keywords: hexo github
 description: Hexo+Github Pages入门基础的安装和部署，使用next主题，教你发布第一篇文章。
-date: 2023-09-04 11:45:00
+date: 2018-09-06 11:45:00
 ---
 ## 概要
 参考https://albenw.github.io/
