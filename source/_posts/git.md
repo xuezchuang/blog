@@ -89,19 +89,30 @@ git merge dev//把dev分支的东西合并到master上
 git merge dev --no-ff		用这个
 ```
 ### 生成key
-只需一个秘钥可以ssh-keygen -t rsa -C "",多个秘钥
 ```shell
 ssh-keygen -t rsa -C "13436472835@163.com" -f ~/.ssh/github_snow
 ```
 ### 测试连接
 ```
-ssh -T xuezchuang@github.com
+ssh -T git@github.com –p 22
+```
+```
+ssh -T git@bitbucket.org –p 22
 ```
 指定秘钥测试
 ```
 ssh -i ~/.ssh/github_snow -T xuezchuang@github.com
 ```
 ### 多秘钥配置
+github有时候不能布置,算求了..生成秘钥
+```
+ssh-keygen -t rsa
+```
+为了兼容tortoisegit,在Network替换为如下.否则要生成多秘钥还有时配不全
+```
+C:\Program Files\Git\usr\bin\ssh.exe
+```
+
 设置代理,设置哪个网站使用那个秘钥
 ```
 ssh-agent bash

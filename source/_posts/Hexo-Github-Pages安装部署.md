@@ -184,7 +184,7 @@ git branch --set-upstream hexo-src origin/hexo-src - 关联上
 ```
 好了，以后改完文章或者修改完主题配置，就可以 push 到 github 了。
 ## 添加链接
-在配置文件_config.yml中,找到social.添加书签跳转
+在配置文件themes\hexo-theme-next\_config.yml中,找到social.添加书签跳转
 ```shell
 social:
   GitHub: https://*****.github.io/ || fab fa-github
