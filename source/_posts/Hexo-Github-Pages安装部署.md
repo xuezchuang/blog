@@ -212,3 +212,10 @@ social:
     }
 } 
 ```
+### 文章内跳转
+{% post_link mfc tess%}
+```
+{% post_link Hello-World %}
+{% post_link Hello-World 你好世界 %}
+
+```

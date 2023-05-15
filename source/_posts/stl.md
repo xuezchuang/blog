@@ -1,11 +1,11 @@
-title: math
+title: graph math
 author: xuezc
 tags:
   - math
+  - graph
 description: 数学知识
 categories:
   - math
-  - graph
 abbrlink: a927044d
 date: 2023-04-14 13:32:00
 ---

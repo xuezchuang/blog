@@ -2,9 +2,9 @@ title: opengl dsa
 author: xuezc
 tags:
   - opengl
+  - graph
 categories:
   - opengl
-  - graph
 abbrlink: e83f7fae
 description: 'opengl Direct State Access与之前的示例,使用到的api方便搜索'
 date: 2023-05-10 08:32:00
