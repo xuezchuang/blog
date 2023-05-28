@@ -1,8 +1,11 @@
 title: stl
 author: xuezc
-tags: []
+tags:
+  - std
+  - c++
 description: 对标准库的深入学习
-categories: []
+categories:
+  - c++
 abbrlink: a6a19e9a
 date: 2023-04-02 10:34:00
 ---
@@ -261,9 +264,11 @@ CData(std::string& str)
 ```c++
 CData(std::string& str)
 ~CData()
-```  
+```
+
 这里如果需要高效率，对于右值的调用应该使用CData(std::string&& str) : data(str)移动函数操作。
 在模板Creator中,不适用std::forward的话T&&会退化为T&
+
 ## 结论
 std::forward会将输入的参数原封不动地传递到下一个函数中，这个“原封不动”指的是，如果输入的参数是左值，那么传递给下一个函数的参数的也是左值；如果输入的参数是右值，那么传递给下一个函数的参数的也是右值。
 定义:

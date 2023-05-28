@@ -88,9 +88,19 @@ git merge dev//把dev分支的东西合并到master上
 在主分支上应该可以只显示子分支的提交，可百度：
 git merge dev --no-ff		用这个
 ```
-### 生成key
+### 生成key 
 ```shell
 ssh-keygen -t rsa -C "13436472835@163.com" -f ~/.ssh/github_snow
+```
+```shell
+ssh-keygen -t rsa
+```
+更安全的
+```shell
+ssh-keygen -t ECDSA
+```
+```shell
+ssh-keygen -t Ed25519
 ```
 ### 测试连接
 ```
