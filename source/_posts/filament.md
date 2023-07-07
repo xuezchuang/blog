@@ -95,3 +95,44 @@ DECL_DRIVER_API_R_N(backend::RenderTargetHandle, createRenderTarget,
 ```
 
 # CommandType命令解析
+
+```c
+template<typename T, typename Type, typename D, typename ... ARGS>
+constexpr decltype(auto) invoke(Type T::* m, D&& d, ARGS&& ... args) {
+    static_assert(std::is_base_of<T, std::decay_t<D>>::value,
+            "member function and object not related");
+    return (std::forward<D>(d).*m)(std::forward<ARGS>(args)...);
+}
+
+template<typename M, typename D, typename T, std::size_t... I>
+constexpr decltype(auto) trampoline(M&& m, D&& d, T&& t, std::index_sequence<I...>) {
+    return invoke(std::forward<M>(m), std::forward<D>(d), std::get<I>(std::forward<T>(t))...);
+}
+
+template<typename M, typename D, typename T>
+constexpr decltype(auto) apply(M&& m, D&& d, T&& t) {
+    return trampoline(std::forward<M>(m), std::forward<D>(d), std::forward<T>(t),
+            std::make_index_sequence< std::tuple_size<std::remove_reference_t<T>>::value >{});
+}
+```
+总结:  
+当把可变参数作为参数传入函数,或者传入类中,使用std::tuple保存下来.
+using SavedParameters = std::tuple<std::remove_reference_t<ARGS>...>;
+解析: 上述函数apply->trampoline->invoke 调用函数.
+ 
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -40,6 +40,7 @@ FXAA3.11有两个版本，其中 Quality 版本是较注重抗锯齿质量的版
 # 基于亮度的混合
 通过计算目标像素和周围像素点的平均亮度的差值，我们来确定将来进行颜色混合时的权重。因为对角像素距离中心像素比较远，所以计算平均亮度值时的权重会略微低一些。
 <img src="/images/fxaa2.png">
+混合因子可见:soble算子 https://blog.sciencenet.cn/blog-425437-1139187.html
 ```glsl
 	FxaaFloat lumaNW = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2(-1, -1), fxaaQualityRcpFrame.xy));
 	FxaaFloat lumaSE = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2(1, 1), fxaaQualityRcpFrame.xy));
@@ -233,15 +234,3 @@ FxaaFloat subpixH = subpixG * fxaaQualitySubpix =  0.75*((-2*0.333+3.0)*(0.3333)
 
 ```
 所以此例子不进行子像素抗锯齿
-
-
-
-
-
-
-
-
-
-
-
-
