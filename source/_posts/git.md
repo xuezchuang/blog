@@ -45,6 +45,7 @@ git config --global --unset http.proxy
 ```shell
 git config --global --unset https.proxy
 ```
+
 ## tortoiseGit的SSH Client设置
 ### 搜索到PuttyGen程序,单击“Load”按钮，如下图所示
 
@@ -59,6 +60,17 @@ git config --global --unset https.proxy
 
 ### 生成的文件添加到这儿
 <img src="/images/add_ppk.png">
+## 链接不上
+1.22端口拒绝的话,可以在.ssh目录下设置文件config,内容如下
+```
+Host github.com
+  Hostname ssh.github.com
+  Port 443
+```
+2.链接不上的话,直接在network里设置ssh代理程序,使用git的ssh程序
+```
+C:\Program Files\Git\usr\bin\ssh.exe
+```
 
 ## git命令
 查看当前版本
