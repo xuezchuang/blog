@@ -93,7 +93,7 @@ resources将结构体的名字重新赋予.类似这样:
 layout(binding = 7, std140) uniform globalsBlock { GlobalsUboStorage _globalsBlock; };
 ```
 ## shader_create的过程
-在GPU_shader_create_from_info文件中,编译.
+在GPU_shader_create_from_info函数中,编译.
 ```
     Vector<const char *> sources;
     standard_defines(sources);
@@ -199,8 +199,40 @@ DRW_shgroup_call_ex
 
 
 # drw_engines_cache_init
+创建DRWPass*结构体.
+## workbench_cache_init
+
+```
+typedef struct WORKBENCH_PassList {
+  struct DRWPass *opaque_ps;
+  struct DRWPass *opaque_infront_ps;
+  ...
+  }
+
+typedef struct WORKBENCH_Prepass {
+  /** Hash storing shading group for each Material or GPUTexture to reduce state changes. */
+  struct GHash *material_hash;
+  /** First common (non-vertex-color and non-image-colored) shading group to created subgroups. */
+  struct DRWShadingGroup *common_shgrp;
+  /** First Vertex Color shading group to created subgroups. */
+  struct DRWShadingGroup *vcol_shgrp;
+  /** First Image shading group to created subgroups. */
+  struct DRWShadingGroup *image_shgrp;
+  /** First UDIM (tiled image) shading group to created subgroups. */
+  struct DRWShadingGroup *image_tiled_shgrp;
+} WORKBENCH_Prepass;
+
+typedef struct WORKBENCH_PrivateData {
+  WORKBENCH_Prepass prepass[2][2][WORKBENCH_DATATYPE_MAX];
+}
+
+```
+以workbench中的workbench_opaque_cache_init为例说明
+创建opaque_ps和opaque_infront_ps,这些pass生成DRWShadingGroup给到结构体WORKBENCH_PrivateData.
+
+
 ## OVERLAY_cache_init
-创建DRWPass-->添加-->DRWShadingGroup
+创建DRWPass-->添加-->DRWShadingGroup    -->添加draw_command
 ```c
 OVERLAY_edit_mesh_cache_init
 //创建psl的DRWPass 
@@ -211,25 +243,31 @@ grp = pd->edit_mesh_verts_grp[i] = DRW_shgroup_create(sh, psl->edit_mesh_verts_p
 ```
 # cache_populate
 函数drw_engines_cache_populate
+对GPUBatch*和DRWShadingGroup*分配内存,添加command命令,然后把grp(DRWShadingGroup*)赋予到pass中.
+同时对DRWShadingGroup通过uniform赋值opengl的值
 ## workbench_cache_populate
 ```
 列举出以为重要的函数堆栈
-1.cache_populate
-2.workbench_cache_populate
-3.workbench_cache_common_populate
-4.workbench_object_surface_material_get
-5.DRW_cache_mesh_surface_shaded_get
-6.DRW_mesh_batch_cache_get_surface_shaded
+cache_populate
+workbench_cache_populate
+workbench_cache_common_populate
+workbench_object_surface_material_get
+DRW_cache_mesh_surface_shaded_get
+DRW_mesh_batch_cache_get_surface_shaded
 ```
+mesh_batch_cache_request_surface_batches函数对MeshBatchCache中的batch.surface分配GPUBatch*;
+然后DRWShadingGroup生成command,添加GPUBatch*
+WORKBENCH_Prepass *prepass = &wpd->prepass[transp][infront][datatype];
+
 ## OVERLAY_cache_populate
 mesh点数据通过函数DRW_mesh_batch_cache_get_edit_vertices添加到绘图命令中.
 创建GPUBatch*,并且添加到DRWShadingGroup*中.
 ```
-0.drw_engines_cache_populate
-1.OVERLAY_cache_populate
-2.OVERLAY_edit_mesh_cache_populate
-3.overlay_edit_mesh_add_ob_to_pass
-4.DRW_mesh_batch_cache_get_edit_vertices
+drw_engines_cache_populate
+OVERLAY_cache_populate
+OVERLAY_edit_mesh_cache_populate
+overlay_edit_mesh_add_ob_to_pass
+DRW_mesh_batch_cache_get_edit_vertices
 ```
 DRW_mesh_batch_cache_get_edit_vertices生成object的mesh,并且给到pd->edit_mesh_verts_grp[in_front];绘制命令中.
 ## drw_batch_cache_generate_requested

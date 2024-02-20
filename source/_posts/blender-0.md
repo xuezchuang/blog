@@ -21,3 +21,10 @@ DEG_OBJECT_ITER_END;
 表数据为deg_iter_settings.depsgraph = depsgraph;
 监视使用(blender::deg::Depsgraph *)depsgraph和((blender::deg::Depsgraph *)depsgraph)->id_nodes.begin_,14
 ob的结构体为OBject*.数据为id_nodes的表数据Object *object = (Object *)id_node->id_cow;
+
+# 数据库
+ui设置but消息
+```
+1.RNA_property_boolean_set
+2.ui_but_value_set
+```

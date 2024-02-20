@@ -1,6 +1,7 @@
 title: filament
 author: xuezc
-tags: []
+tags:
+  - filament
 categories: []
 abbrlink: 9daa3ba6
 description: filament
@@ -119,20 +120,6 @@ constexpr decltype(auto) apply(M&& m, D&& d, T&& t) {
 当把可变参数作为参数传入函数,或者传入类中,使用std::tuple保存下来.
 using SavedParameters = std::tuple<std::remove_reference_t<ARGS>...>;
 解析: 上述函数apply->trampoline->invoke 调用函数.
- 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  
 

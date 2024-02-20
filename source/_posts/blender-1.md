@@ -1,4 +1,4 @@
-title: blender_1
+title: blender_drw_command
 author: xuezc
 abbrlink: a36a2e33
 tags:
@@ -9,7 +9,7 @@ categories:
 description: 以Edit Mode状态下选取顶点为例分析
 date: 2023-06-29 13:08:00
 ---
-blender 源码分析 Mesh
+blender 源码分析 对command的分析已经DrawPass分析
 # struct
 ```
 结构体MeshBatchList中包含了GPUBatch.draw使用.
@@ -42,6 +42,20 @@ struct MeshBatchCache
 8.DRW_mesh_batch_cache_create_requested
 
 ```
+# DRWPass init
+以OVERLAY_antialiasing_cache_init为例
+```
+//创建shader
+GPUShader *sh = OVERLAY_shader_antialiasing();
+//创建Pass
+DRW_PASS_CREATE(psl->antialiasing_ps, DRW_STATE_WRITE_COLOR | DRW_STATE_BLEND_ALPHA_PREMUL);
+//创建DRWShadingGroup,并把此group传给pass
+DRWShadingGroup *grp = DRW_shgroup_create(sh, psl->antialiasing_ps);
+//创建command
+drw_command_draw_procedural
+```
+不同的数据,command函数不一样,创建command函数为drw_command_create
+
 
 # DRW_mesh_batch_cache_create_requested
 可以通过Mesh获取到缓冲结构体MeshBatchCache
