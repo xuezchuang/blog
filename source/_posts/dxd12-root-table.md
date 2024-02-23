@@ -3,6 +3,7 @@ author: xuezc
 abbrlink: 90c7c94
 tags:
   - dx12
+  - graph
 categories:
   - dx12
   - graph
